@@ -45,4 +45,35 @@ public class Party : IEnumerable<Character>
             if (m.HP < threshold) yield return m;
         }
     }
-}
+    
+    public IEnumerable<Character> FilterLevel(int minLevel)
+    {
+        return _members.Where(p =>
+        {
+            return p.Level > minLevel;
+        });
+    }
+
+    public IEnumerable<string> SelectNames()
+    {
+        return _members.Select(p =>
+        {
+            return p.Name;
+        });
+    }
+
+    public float MaxCountOgGold() 
+    {
+        return _members.Count > 0 ? _members.Max(p =>
+        {
+            return p.Gold;
+        }) : 0;
+    }
+
+    public int CountByInjured()
+    {
+        return _members.Count(p =>
+        {
+            return p.HP < 10;
+        });
+    }}

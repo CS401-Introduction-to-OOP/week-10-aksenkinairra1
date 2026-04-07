@@ -34,4 +34,9 @@ public class EventLog : IEnumerable<Event>
             }
         }
     }
+    public IEnumerable<Event> GetChronology()
+    {
+        foreach (var a in _events) yield return a;
+    }
+    
 }
